@@ -1,0 +1,14 @@
+- hosts: centos
+  vars:
+    nameservers:
+    - '8.8.8.8'
+    - '8.8.4.4'
+    ntp_servers:
+    - 'time2.google.com'
+    - 'time1.google.com'    
+  tasks:
+  - include_tasks: hosts.yml
+
+  - include_tasks: resolv.yml
+
+  - include_tasks: chrony.yml

@@ -1,0 +1,11 @@
+- name: Clean up /etc/resolv.conf
+  lineinfile:
+    path: /etc/resolv.conf
+    state: absent
+    regexp: '^nameserver .*$'
+
+- name: Update /etc/resolv.conf
+  lineinfile:
+    path: /etc/resolv.conf
+    line: "nameserver {{ item }}"
+  with_items: "{{ nameservers }}"
