@@ -1,0 +1,4 @@
+---
+ntp_servers:
+- 'pool.ntp.org'
+- 'time-a-g.nist.gov'   

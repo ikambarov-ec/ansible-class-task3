@@ -1,0 +1,19 @@
+- hosts: all
+  tasks:
+  - import_role:
+      name: ansible-role-hosts
+
+  - import_role:
+      name: ansible-role-resolv
+    vars:
+      nameservers:
+      - '8.8.8.8'
+      - '8.8.4.4'
+
+  - import_role:
+      name: ansible-role-chronyd
+    vars:
+      ntp_servers:
+      - 'time1.google.com'
+      - 'time2.google.com'
+
