@@ -1,16 +1,8 @@
 ---
-- name: Clean up /etc/chrony.conf
-  lineinfile:
-    path: /etc/chrony.conf
-    state: absent
-    regexp: '^server .*$'
-
-- name: Update /etc/chrony.conf
-  lineinfile:
-    path: /etc/chrony.conf
-    line: "server {{ item }} iburst"
-    insertafter: '^# Please '
-  with_items: "{{ ntp_servers }}"
+- name: Update chrony.conf
+  template:
+    src: chrony.conf.j2
+    dest: /etc/chrony.conf
 
 - name: Restart chronyd
   systemd:
